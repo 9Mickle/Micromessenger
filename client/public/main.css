@@ -1,0 +1,45 @@
+html {
+    font-size: 16px;
+    min-width: 100vh;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: black;
+    background-color: white;
+    min-width: 100vh;
+}
+
+.myLink:hover {
+    color: darkgray;
+}
+
+.myLink {
+    color: #111;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    padding: 10px;
+}
+
+.navbar-nav .dropdown-menu {
+    right: 0;
+    left: auto;
+}
+
+.myLink::after {
+    content: '';
+    display: block;
+    width: 100%;
+    background-color: #111;
+    height: 1px;
+    transition: all .3s;
+    transform: scale(0);
+}
+
+.myLink:hover::after {
+    transform: scale(1);
+}

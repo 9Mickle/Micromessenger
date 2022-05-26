@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+
+  postgres:
+    image: postgres:13.3
+    container_name: "postgres"
+    volumes:
+      - ./postgres:/var/lib/postgres/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - "5433:5432"
+
+#  server:
+#    image: backend-server
+#    container_name: backend-server
+#    build: ./server
+#    volumes:
+#      - ../src:/opt/app
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - postgres
+
+#  client:
+#    image: vue-client
+#    container_name: vue-client
+#    build: ./client
+#    ports:
+#      - "8081:8081"
