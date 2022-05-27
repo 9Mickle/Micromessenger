@@ -1,5 +1,6 @@
 package com.server.controller;
 
+import com.server.mapper.UserMapper;
 import com.server.util.JwtUtil;
 import com.server.entity.request.AuthenticationRequest;
 import com.server.entity.JwtResponse;
@@ -55,5 +56,10 @@ public class AuthController {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userService.createUser(user);
         return ResponseEntity.ok("User registered successfully!");
+    }
+
+    @GetMapping("/activate")
+    public ResponseEntity<Object> activateUser(@RequestParam String code) {
+        return ResponseEntity.ok(userService.activateUser(code));
     }
 }

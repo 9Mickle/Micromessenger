@@ -11,9 +11,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-
-import java.util.List;
 
 @Configuration
 @AllArgsConstructor
@@ -23,8 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final JwtRequestFilter jwrRequestFilter;
 
     private final static String[] ANT_MATCHERS = {
-            "/api/auth/signin",
-            "/api/auth/signup",
+            "/api/auth/**",
             "/v3/api-docs/**",
             "/swagger-resources/**",
             "/documentation/**",
@@ -38,34 +34,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        CorsConfiguration configuration = new CorsConfiguration();
-//        configuration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type"));
-//        configuration.setAllowedOriginPatterns(List.of("*"));
-//        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
-//        configuration.setAllowCredentials(true);
-//        configuration.setExposedHeaders(List.of("Authorization"));
-
         http.cors().and().csrf().disable();
-//        http.csrf().disable();
-//        http.cors().configurationSource(request -> configuration);
         http.authorizeRequests().antMatchers(ANT_MATCHERS).permitAll();
         http.authorizeRequests().anyRequest().authenticated();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwrRequestFilter, UsernamePasswordAuthenticationFilter.class);
-
-//        http.authorizeRequests().antMatchers(ANT_MATCHERS).permitAll().anyRequest()
-//                .authenticated().and().csrf().disable().cors().configurationSource(request -> configuration);
     }
-
-//    @Bean
-//    public CorsConfigurationSource corsConfigurationSource() {
-//        CorsConfiguration configuration = new CorsConfiguration();
-//        configuration.setAllowedOrigins(List.of("http://localhost:8081/"));
-//        configuration.setAllowedMethods(List.of("GET","POST", "PUT", "DELETE"));
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", configuration);
-//        return source;
-//    }
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {

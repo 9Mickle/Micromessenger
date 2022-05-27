@@ -27,13 +27,6 @@ public class UserController {
                 .collect(Collectors.toList()));
     }
 
-//    @PreAuthorize("hasAuthority('ROLE_USER') or hasAuthority('ROLE_ADMIN')")
-//    @GetMapping("/all/?usernames=")
-//    public ResponseEntity<Object> getAllUsersByUsernames(@RequestParam List<String> usernames) {
-//        System.out.println(usernames);
-//        return ResponseEntity.ok(userService.findUsersByUsernames(usernames));
-//    }
-
     @PreAuthorize("hasAuthority('ROLE_USER') or hasAuthority('ROLE_ADMIN')")
     @GetMapping("/")
     public ResponseEntity<Object> getByUsername(@RequestParam("username") String username) {

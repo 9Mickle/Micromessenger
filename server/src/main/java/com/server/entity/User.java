@@ -21,6 +21,8 @@ public class User {
     private String username;
     private String email;
     private String password;
+    private String activationCode;
+    private Boolean isActivated;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "user_chat",
             joinColumns = @JoinColumn(name = "user_id"),
