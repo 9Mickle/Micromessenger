@@ -35,7 +35,6 @@
               <!--            От кого-то-->
               <div v-if="!(message.senderId === userId)" class="incoming_msg">
                 <!--              <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>-->
-                <div style="float: left; margin-top: 10px"><p>ЧЕЛ</p></div>
                 <div class="received_msg">
                   <div class="received_withd_msg">
                     <p>{{ message.content }}</p>
@@ -45,7 +44,6 @@
               </div>
               <!--            От меня-->
               <div v-if="message.senderId === userId" class="outgoing_msg">
-                <div style="float: right; margin-top: 10px"><p>Я</p></div>
                 <div class="sent_msg">
                   <p>{{ message.content }}</p>
                   <span class="time_date"> 11:01 AM    |    June 9</span></div>

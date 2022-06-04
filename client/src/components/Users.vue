@@ -53,7 +53,6 @@ export default {
   },
   methods: {
     usersGet() {
-      // console.log('токен users: ' + token)
       axios
           .get("http://localhost:8080/api/user/all", config)
           .then((response) => {

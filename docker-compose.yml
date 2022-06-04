@@ -1,5 +1,6 @@
 version: "3.9"
 services:
+
   rabbitmq:
     image: rabbitmq:3.9-management
     container_name: "rabbitmq"
@@ -50,10 +51,23 @@ services:
 #      - "8080:8080"
 #    depends_on:
 #      - postgres
-
+#      - rabbitmq
+#
+#  mail_service:
+#    image: mail-service
+#    container_name: mail-service
+#    build: ./mail-service
+#    volumes:
+#      - ../src:/opt/app
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#        - maildev
+#        - rabbitmq
 #  client:
 #    image: vue-client
 #    container_name: vue-client
 #    build: ./client
 #    ports:
 #      - "8081:8081"
+

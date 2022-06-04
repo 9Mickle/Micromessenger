@@ -18,11 +18,6 @@ public class MailCheckService {
 
     private final JavaMailSender mailSender;
 
-//    private final MailCheckHistoryRepository mailRepository;
-
-    @Value("${spring.mail.username}")
-    private String username;
-
     /**
      * Метод, который отправляет на почту ссылку с подтверждением почты.
      */
