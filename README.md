@@ -1,5 +1,5 @@
 ## 1. Technology stack:
-* Java 11
+* Java 17
 * Spring(Boot, Data, Security, Mail)
 * Maven
 * Docker
