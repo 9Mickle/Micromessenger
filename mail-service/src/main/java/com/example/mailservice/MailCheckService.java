@@ -1,5 +1,6 @@
 package com.example.mailservice;
 
+import com.example.mailservice.configuration.RabbitMQConfig;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -21,7 +22,7 @@ public class MailCheckService {
     /**
      * Метод, который отправляет на почту ссылку с подтверждением почты.
      */
-    @RabbitListener(queues = "serverQueue")
+    @RabbitListener(queues = RabbitMQConfig.QUEUE)
     public void sendMailConfirm(MailConfirmRequest confirmRequest) {
 
         try {

@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQConfig {
 
-    public static final String QUEUE = "mailQueue";
+    public static final String QUEUE = "serverQueue";
     public static final String EXCHANGE = "mailExchange";
     public static final String ROUTING_KEY = "mailKey";
 
