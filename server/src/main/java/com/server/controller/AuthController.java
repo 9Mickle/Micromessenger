@@ -7,6 +7,7 @@ import com.server.entity.JwtResponse;
 import com.server.entity.User;
 import com.server.repository.RoleRepository;
 import com.server.service.impl.UserServiceImpl;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +33,7 @@ public class AuthController {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final RoleRepository roleRepository;
 
+    @Operation(summary = "User authentication")
     @PostMapping("/signin")
     public ResponseEntity<Object> authenticateUser(@RequestBody AuthenticationRequest authRequest) {
         if (userService.findByUsername(authRequest.getUsername()) != null) {
@@ -48,6 +50,7 @@ public class AuthController {
         }
     }
 
+    @Operation(summary = "User registration")
     @PostMapping("/signup")
     public ResponseEntity<Object> registerUser(@RequestBody User user) {
         // Ставим по умолчанию.

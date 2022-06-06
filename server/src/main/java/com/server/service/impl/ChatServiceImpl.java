@@ -51,7 +51,6 @@ public class ChatServiceImpl implements ChatService {
                 .users(users)
                 .build();
         users.forEach(user -> user.getChats().add(chat));
-//        chat.setMessages(new ArrayList<>());
         return chatRepository.save(chat);
     }
 

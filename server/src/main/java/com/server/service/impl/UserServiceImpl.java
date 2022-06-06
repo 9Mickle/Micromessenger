@@ -47,18 +47,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public List<User> findUsersByUsernames(List<String> usernames) {
-        System.out.println(usernames.stream()
-                .map(username -> userRepository.findByUsername(username)
-                        .orElseThrow(() -> new NotFoundException("User not found with username: " + username)))
-                .collect(Collectors.toList()));
-        return usernames.stream()
-                .map(username -> userRepository.findByUsername(username)
-                        .orElseThrow(() -> new NotFoundException("User not found with username: " + username)))
-                .collect(Collectors.toList());
-    }
-
-    @Override
     public User findById(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("User not found with id: " + id));
@@ -94,7 +82,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 .orElseThrow(() -> new NotFoundException("User not found with code: " + code));
 
         if (user.getIsActivated()) {
-            throw new IllegalStateException("email already confirmed");
+            throw new IllegalStateException("Email already confirmed");
         }
         user.setIsActivated(true);
         userRepository.save(user);

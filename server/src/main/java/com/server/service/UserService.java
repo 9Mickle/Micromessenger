@@ -10,7 +10,6 @@ import java.util.Optional;
 public interface UserService {
 
     List<User> findAllUsers();
-    List<User> findUsersByUsernames(List<String> usernames);
 
     User findById(Long id);
 
