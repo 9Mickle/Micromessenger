@@ -7,6 +7,7 @@
 * Lombok
 * RabbitMQ
 * Mapstruct
+* Swagger
 
 ## 2. Screenshots:
 ## Registration form ![](screenshot/Register.png)
