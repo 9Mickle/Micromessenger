@@ -41,29 +41,30 @@ services:
     ports:
       - "5433:5432"
 
-#  server:
-#    image: backend-server
-#    container_name: backend-server
-#    build: ./server
-#    volumes:
-#      - ../src:/opt/app
-#    ports:
-#      - "8080:8080"
-#    depends_on:
-#      - postgres
-#      - rabbitmq
-#
-#  mail_service:
-#    image: mail-service
-#    container_name: mail-service
-#    build: ./mail-service
-#    volumes:
-#      - ../src:/opt/app
-#    ports:
-#      - "8080:8080"
-#    depends_on:
-#        - maildev
-#        - rabbitmq
+  server:
+    image: backend-server
+    container_name: backend-server
+    build: ./server
+    volumes:
+      - ../src:/opt/app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - rabbitmq
+
+  mail_service:
+    image: mail-service
+    container_name: mail-service
+    build: ./mail-service
+    volumes:
+      - ../src:/opt/app
+    ports:
+      - "8081:8081"
+    depends_on:
+        - maildev
+        - rabbitmq
+
 #  client:
 #    image: vue-client
 #    container_name: vue-client

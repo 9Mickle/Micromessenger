@@ -1,4 +1,4 @@
-FROM adoptopenjdk:11-jre-hotspot
+FROM openjdk:17-oracle
 ENV APP_HOME=usr/app
 WORKDIR ${APP_HOME}
 COPY /target/*.jar app.jar
